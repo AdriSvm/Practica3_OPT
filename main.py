@@ -22,9 +22,8 @@ class OP_Problema:
     def evolve(self) -> np.array:
         els = []
         els.append((random.randint(0,self._matriu.shape()[0]-1),random.randint(0,self._matriu.shape()[1]-1)))
-        print(els)
+        
         while len(els) > 0:
-            print(els)
             nucli = els.pop()
             if self._matriu.Capa[nucli[0]][nucli[1]] == 0:
                 for i,val in enumerate(OP_Problema.vicinity30(self._matriu,nucli[0],nucli[1],self._cobstacles)):
@@ -37,7 +36,7 @@ class OP_Problema:
 
     @staticmethod
     def vicinity30(matriu,fila,columna, matriu_obstacles):
-        print(fila,columna)
+        
         #if str(type(matriu)) != "<class 'numpy.ndarray'>" or type(fila) != int or type(columna) != int:
         #    raise Exception("Vicinity function only callable with a numpy one-row object")
         # 0: pot propagar, 1: no pot propagar
@@ -72,7 +71,7 @@ class OP_Problema:
 
 proba = OP_Problema(220,10)
 res,obst = proba.evolve()
-print(res,obst,sep='\n\n\n')
+
 
 fig, ax = plt.subplots()
 
