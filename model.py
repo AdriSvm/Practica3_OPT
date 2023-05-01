@@ -1,9 +1,14 @@
 import numpy as np, random
 class Capa():
-    def __init__(self, nrow:int,ncol:int,init_value:[int,float,str,bool]):
-        self.Capa = np.array([[init_value for _ in range(ncol)] for _ in range(nrow)])
-        self.nrows = nrow
-        self.ncols = ncol
+    def __init__(self, nrow:int,ncol:int,init_value:[int,float,str,bool],matrix=None):
+        if matrix is not None:
+            self.Capa=matrix
+            self.nrows = self.shape()[0]
+            self.ncols = self.shape()[0]
+        else:
+            self.Capa = np.array([[init_value for _ in range(ncol)] for _ in range(nrow)])
+            self.nrows = nrow
+            self.ncols = ncol
 
     def change_value(self,nrow:int,ncol:int,value):
         try:
@@ -29,8 +34,11 @@ class Capa():
     def gen_one_value(self,nrow:int,ncol:int,value):
         self.Capa[nrow,ncol] = value
 
+    def gen_values(self,nrow_init:int,nrow_fin:int,ncol_init:int,ncol_fin:int,values):
+        self.Capa[nrow_init:nrow_fin+1,ncol_init:ncol_fin] = values
+
     def gen_layer_values(self,colinit:int,colfin:int,rowinit:int,rowfin:int,value):
-        self.Capa[rowinit:rowfin,colinit:colfin] = value
+        self.Capa[rowinit:rowfin+1,colinit:colfin] = value
 
     def shape(self):
         sh = self.Capa.shape
