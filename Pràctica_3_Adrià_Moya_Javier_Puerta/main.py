@@ -144,20 +144,21 @@ proba = OP_Problema(220,220,10)
 #res,obst = proba.evolve()
 
 # And the second implementation is called through the next line, we specify the position of the start of the avalanche
-res,obst,neu = proba.evolve_prop(1,100)
+res,obst,neu = proba.evolve_prop(110,100)
 
 #Then we plot the simulation results
 fig, ax = plt.subplots()
 
 
 ax.imshow(res, cmap='viridis')
-
+ax.set_title("Capa de l'allau", loc="center")
 
 plt.show()
 
 fig, ax = plt.subplots()
 
 ax.imshow(obst, cmap='binary')
+ax.set_title("Capa dels obstacles", loc="center")
 
 
 plt.show()
@@ -167,6 +168,7 @@ fig, ax = plt.subplots()
 
 
 ax.imshow(neu, cmap='viridis')
+ax.set_title("Capa de la neu", loc="center")
 
 
 plt.show()
